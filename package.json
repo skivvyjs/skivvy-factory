@@ -1,0 +1,38 @@
+{
+  "name": "skivvy-factory",
+  "version": "0.0.1",
+  "description": "Create Skivvy tasks from Factory templates",
+  "main": "index.js",
+  "scripts": {
+    "test": "eslint index.js test && mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timkendrick/skivvy-factory.git"
+  },
+  "keywords": [
+    "skivvy",
+    "factory",
+    "converter",
+    "translator",
+    "template",
+    "scaffolding",
+    "component"
+  ],
+  "author": "Tim Kendrick <timkendrick@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/timkendrick/skivvy-factory/issues"
+  },
+  "homepage": "https://github.com/timkendrick/skivvy-factory#readme",
+  "devDependencies": {
+    "@timkendrick/node-project": "^1.0.0",
+    "chai": "^2.3.0",
+    "rewire": "^2.3.3",
+    "sinon": "^1.14.1",
+    "sinon-chai": "^2.7.0"
+  },
+  "dependencies": {
+    "factory": "^1.0.1"
+  }
+}
