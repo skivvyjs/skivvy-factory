@@ -65,10 +65,17 @@ describe('skivvyFactory()', function() {
 	function createMockSkivvy() {
 		return {
 			utils: {
-				log: sinon.spy()
+				log: {
+					info: sinon.spy()
+				},
+				colors: {
+					path: function(string) {
+						return '<path>' + string + '</path>';
+					}
+				}
 			},
 			reset: function() {
-				this.utils.log.reset();
+				this.utils.log.info.reset();
 			}
 		};
 	}
@@ -228,6 +235,6 @@ describe('skivvyFactory()', function() {
 			dest: 'dest/my-component'
 		});
 
-		expect(mockSkivvy.utils.log).to.have.been.calledWith('File copied: dest/my-component');
+		expect(mockSkivvy.utils.log.info).to.have.been.calledWith('File copied: <path>dest/my-component</path>');
 	});
 });

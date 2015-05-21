@@ -33,6 +33,7 @@
     "sinon-chai": "^2.7.0"
   },
   "dependencies": {
-    "factory": "^1.0.1"
+    "factory": "^1.0.1",
+    "skivvy": "^1.0.3"
   }
 }

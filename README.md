@@ -1,6 +1,10 @@
 # skivvy-factory
+[![npm version](https://img.shields.io/npm/v/skivvy-factory.svg)](https://www.npmjs.com/package/skivvy-factory)
+![Stability](https://img.shields.io/badge/stability-stable-brightgreen.svg)
+[![Build Status](https://travis-ci.org/timkendrick/skivvy-factory.svg?branch=master)](https://travis-ci.org/timkendrick/skivvy-factory)
 
 > Create Skivvy tasks from Factory templates
+
 
 ## Overview
 
