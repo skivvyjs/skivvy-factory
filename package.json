@@ -3,6 +3,14 @@
   "version": "0.0.1",
   "description": "Create Skivvy tasks from Factory templates",
   "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "files": [
+    "index.js",
+    "lib"
+  ],
   "scripts": {
     "test": "eslint index.js test && mocha --reporter spec"
   },
@@ -13,8 +21,6 @@
   "keywords": [
     "skivvy",
     "factory",
-    "converter",
-    "translator",
     "template",
     "scaffolding",
     "component"
@@ -28,6 +34,8 @@
   "devDependencies": {
     "@timkendrick/node-project": "^1.0.0",
     "chai": "^2.3.0",
+    "eslint": "^0.21.2",
+    "mocha": "^2.2.5",
     "rewire": "^2.3.3",
     "sinon": "^1.14.1",
     "sinon-chai": "^2.7.0"
