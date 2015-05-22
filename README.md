@@ -161,9 +161,26 @@ Create a Skivvy task from a Factory template
 | `options.overwrite` | `boolean` | No | `false` | Whether to overwrite existing files |
 | `placeholders` | `Array` | No | `[]` | Array of [inquirer](https://www.npmjs.com/package/inquirer) prompts used to gather data for injecting into templates |
 | `context` | `object` | No | `{}` | Preset template placeholder values |
+| `getContext` | `function` | No | `null` | Function that transforms placeholder values before they are passed to the template |
 | `description` | `string` | No | `null` | Skivvy task description |
 
-> Values within the `options` , `placeholders` and `context` option values can use Skivvy task config [placeholder values](https://github.com/timkendrick/skivvy/blob/master/docs/guide/02-configuring-tasks.md#using-placeholders-in-configuration-values).
+##### Notes:
+
+- Values within the `options` , `placeholders` and `context` option values can use Skivvy task config [placeholder values](https://github.com/timkendrick/skivvy/blob/master/docs/guide/02-configuring-tasks.md#using-placeholders-in-configuration-values).
+
+- `getContext` has the following signature:
+
+	##### `function(context)`
+
+	###### Arguments:
+
+	| Name | Type | Description |
+	| ---- | ---- | ----------- |
+	| `context` | `object` | Key/value object containing placeholder values, gathered from factory `context` and template `placeholders` |
+
+	###### Returns:
+
+	`object` Key/value object containing transformed context placeholder for use in templates
 
 #### Returns:
 

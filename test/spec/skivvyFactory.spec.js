@@ -150,8 +150,10 @@ describe('skivvyFactory()', function() {
 	});
 
 	it('should invoke the template factory when the task is launched, and return the instance', function() {
+		var contextTransformFn = function(context) { return context; };
 		var task = skivvyFactory({
-			template: 'my-template'
+			template: 'my-template',
+			getContext: contextTransformFn
 		});
 
 		var config = {
@@ -182,7 +184,8 @@ describe('skivvyFactory()', function() {
 			placeholders: [
 				{ name: 'greeting', message: 'Enter a greeting' },
 				{ name: 'user', message: 'Enter a user' }
-			]
+			],
+			getContext: contextTransformFn
 		});
 		expect(mockFactory._templateFactory).to.have.been.calledOnce;
 		expect(mockFactory._templateFactory).to.have.been.calledWith(
