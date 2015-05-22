@@ -12,6 +12,7 @@
     "lib"
   ],
   "scripts": {
+  	"prepublish": "npm test",
     "test": "eslint index.js test && mocha --reporter spec"
   },
   "repository": {
