@@ -102,7 +102,8 @@ describe('skivvyFactory()', function() {
 		expected = null;
 		expect(actual).to.eql({
 			options: null,
-			context: null
+			context: null,
+			placeholders: null
 		});
 	});
 
@@ -117,7 +118,11 @@ describe('skivvyFactory()', function() {
 			context: {
 				foo: 'foo',
 				bar: 'bar'
-			}
+			},
+			placeholders: [
+				{ name: 'greeting', message: 'Enter a greeting' },
+				{ name: 'user', message: 'Enter a user' }
+			]
 		});
 
 		var actual, expected;
@@ -136,30 +141,12 @@ describe('skivvyFactory()', function() {
 			context: {
 				foo: 'foo',
 				bar: 'bar'
-			}
-		});
-	});
-
-	it('should create the template factory immediately', function() {
-		skivvyFactory({
-			template: 'my-template',
-			description: 'Hello, world!',
+			},
 			placeholders: [
-				{ name: 'hello', message: 'Hello' },
-				{ name: 'world', message: 'World' }
+				{ name: 'greeting', message: 'Enter a greeting' },
+				{ name: 'user', message: 'Enter a user' }
 			]
 		});
-
-		expect(mockFactory).to.have.been.calledOnce;
-		expect(mockFactory).to.have.been.calledWith({
-			template: 'my-template',
-			placeholders: [
-				{ name: 'hello', message: 'Hello' },
-				{ name: 'world', message: 'World' }
-			]
-		});
-
-		expect(mockFactory._templateFactory).not.to.have.been.called;
 	});
 
 	it('should invoke the template factory when the task is launched, and return the instance', function() {
@@ -175,7 +162,11 @@ describe('skivvyFactory()', function() {
 			context: {
 				foo: 'foo',
 				bar: 'bar'
-			}
+			},
+			placeholders: [
+				{ name: 'greeting', message: 'Enter a greeting' },
+				{ name: 'user', message: 'Enter a user' }
+			]
 		};
 
 		var templater = task.call(mockSkivvy, config);
@@ -186,6 +177,13 @@ describe('skivvyFactory()', function() {
 		expect(actual).to.equal(expected);
 
 		expect(mockFactory).to.have.been.calledOnce;
+		expect(mockFactory).to.have.been.calledWith({
+			template: 'my-template',
+			placeholders: [
+				{ name: 'greeting', message: 'Enter a greeting' },
+				{ name: 'user', message: 'Enter a user' }
+			]
+		});
 		expect(mockFactory._templateFactory).to.have.been.calledOnce;
 		expect(mockFactory._templateFactory).to.have.been.calledWith(
 			{

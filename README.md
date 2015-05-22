@@ -32,6 +32,11 @@ module.exports = skivvyFactory({
 		{
 			name: 'name',
 			message: 'Component name'
+		},
+		{
+			name: 'author',
+			message: 'Author',
+			default: '<%= project.author %>'
 		}
 	],
 	options: {
@@ -39,8 +44,7 @@ module.exports = skivvyFactory({
 		overwrite: true
 	},
 	context: {
-		author: '<%= project.author %>',
-		copyright: '<%= project.copyright %>'
+		license: '<%= project.license %>'
 	}
 });
 ```
@@ -74,15 +78,19 @@ exports.tasks = {
 			{
 				name: 'name',
 				message: 'Component name'
+			},
+			{
+				name: 'author',
+				message: 'Author',
+				default: '<%= package.author %>'
 			}
 		],
 		options: {
 			destination: '<%= package.paths.components %>',
 			overwrite: true
 		},
-		context: {
-			author: '<%= package.author %>',
-			copyright: '<%= package.copyright %>'
+		context: {,
+			license: '<%= package.license %>'
 		}
 	}),
 	'create-service': skivvyFactory({
@@ -92,6 +100,11 @@ exports.tasks = {
 			{
 				name: 'name',
 				message: 'Service name'
+			},
+			{
+				name: 'author',
+				message: 'Author',
+				default: '<%= package.author %>'
 			}
 		],
 		options: {
@@ -99,8 +112,7 @@ exports.tasks = {
 			overwrite: true
 		},
 		context: {
-			author: '<%= package.author %>',
-			copyright: '<%= package.copyright %>'
+			license: '<%= package.license %>'
 		}
 	})
 };
@@ -111,7 +123,7 @@ exports.defaults = {
 		service: null
 	},
 	author: '<%= project.author %>',
-	copyright: '<%= project.copyright %>'
+	license: '<%= project.license %>'
 }
 ```
 
@@ -144,13 +156,14 @@ Create a Skivvy task from a Factory template
 | Name | Type | Required | Default | Description |
 | ---- | ---- | -------- | ------- | ----------- |
 | `template` | `string` | Yes | N/A | Path to the Factory template folder |
+| `options` | `object` | Yes | N/A | Factory copy options |
 | `options.destination` | `string` | Yes | N/A | Destination directory for output files |
+| `options.overwrite` | `boolean` | No | `false` | Whether to overwrite existing files |
 | `placeholders` | `Array` | No | `[]` | Array of [inquirer](https://www.npmjs.com/package/inquirer) prompts used to gather data for injecting into templates |
 | `context` | `object` | No | `{}` | Preset template placeholder values |
-| `options.overwrite` | `boolean` | No | `false` | Whether to overwrite existing files |
 | `description` | `string` | No | `null` | Skivvy task description |
 
-> Values within the `context` and `options` option values can use Skivvy task config [placeholder values](https://github.com/timkendrick/skivvy/blob/master/docs/guide/02-configuring-tasks.md#using-placeholders-in-configuration-values).
+> Values within the `options` , `placeholders` and `context` option values can use Skivvy task config [placeholder values](https://github.com/timkendrick/skivvy/blob/master/docs/guide/02-configuring-tasks.md#using-placeholders-in-configuration-values).
 
 #### Returns:
 
