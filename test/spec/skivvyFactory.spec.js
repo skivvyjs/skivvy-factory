@@ -48,7 +48,8 @@ describe('skivvyFactory()', function() {
 		templateFactory._instance = templateInstance;
 
 		factory.events = {
-			'COPY_FILE_COMPLETE': 'copyFileComplete'
+			'COPY_FILE_COMPLETE': 'copyFileComplete',
+			'CREATE_SYMLINK_COMPLETE': 'createSymlinkComplete'
 		};
 
 		(function(factoryReset) {
@@ -212,30 +213,28 @@ describe('skivvyFactory()', function() {
 		task.call(mockSkivvy, config);
 
 		var listenerSpy = mockFactory._templateFactory._instance.on;
-		expect(listenerSpy).to.have.been.calledOnce;
+		expect(listenerSpy).to.have.been.calledTwice;
 
-		var actual, expected;
-
-		actual = listenerSpy.firstCall.args.length;
-		expected = 2;
-		expect(actual).to.equal(expected);
-
-		var eventName = listenerSpy.firstCall.args[0];
-		var handler = listenerSpy.firstCall.args[1];
-
-		actual = eventName;
-		expected = 'copyFileComplete';
-		expect(actual).to.equal(expected);
-
-		actual = handler;
-		expected = 'function';
-		expect(actual).to.be.a(expected);
-
+		var args = listenerSpy.firstCall.args;
+		expect(args.length).to.equal(2);
+		expect(args[0]).to.equal('copyFileComplete');
+		expect(args[1]).to.be.a('function');
+		var handler = args[1];
 		handler({
 			src: 'src/my-component',
 			dest: 'dest/my-component'
 		});
+		expect(mockSkivvy.utils.log.info).to.have.been.calledWith('File copied: <path>dest/my-component</path>');
 
+		args = listenerSpy.secondCall.args;
+		expect(args.length).to.equal(2);
+		expect(args[0]).to.equal('createSymlinkComplete');
+		expect(args[1]).to.be.a('function');
+		handler = args[1];
+		handler({
+			src: 'src/my-component',
+			dest: 'dest/my-component'
+		});
 		expect(mockSkivvy.utils.log.info).to.have.been.calledWith('File copied: <path>dest/my-component</path>');
 	});
 });
