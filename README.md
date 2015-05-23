@@ -1,7 +1,7 @@
 # skivvy-factory
 [![npm version](https://img.shields.io/npm/v/skivvy-factory.svg)](https://www.npmjs.com/package/skivvy-factory)
 ![Stability](https://img.shields.io/badge/stability-stable-brightgreen.svg)
-[![Build Status](https://travis-ci.org/timkendrick/skivvy-factory.svg?branch=master)](https://travis-ci.org/timkendrick/skivvy-factory)
+[![Build Status](https://travis-ci.org/skivvyjs/skivvy-factory.svg?branch=master)](https://travis-ci.org/skivvyjs/skivvy-factory)
 
 > Create Skivvy tasks from Factory templates
 
@@ -166,7 +166,7 @@ Create a Skivvy task from a Factory template
 
 ##### Notes:
 
-- Values within the `options` , `placeholders` and `context` option values can use Skivvy task config [placeholder values](https://github.com/timkendrick/skivvy/blob/master/docs/guide/02-configuring-tasks.md#using-placeholders-in-configuration-values).
+- Values within the `options`, `placeholders` and `context` option values can use Skivvy task config [placeholder values](https://github.com/skivvyjs/skivvy/blob/master/docs/guide/02-configuring-tasks.md#using-placeholders-in-configuration-values).
 
 - `getContext` has the following signature:
 

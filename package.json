@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/timkendrick/skivvy-factory.git"
+    "url": "git+https://github.com/skivvyjs/skivvy-factory.git"
   },
   "keywords": [
     "skivvy",
@@ -29,11 +29,11 @@
   "author": "Tim Kendrick <timkendrick@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/timkendrick/skivvy-factory/issues"
+    "url": "https://github.com/skivvyjs/skivvy-factory/issues"
   },
-  "homepage": "https://github.com/timkendrick/skivvy-factory#readme",
+  "homepage": "https://github.com/skivvyjs/skivvy-factory#readme",
   "devDependencies": {
-    "@timkendrick/node-project": "^1.0.4",
+    "@skivvy/project-base": "latest",
     "chai": "^2.3.0",
     "eslint": "^0.21.2",
     "mocha": "^2.2.5",
