@@ -32,17 +32,17 @@ describe('skivvyFactory()', function() {
 	});
 
 	function createMockFactory() {
-		var factory = sinon.spy(function(options, context, callback) {
-			return templateFactory;
-		});
-		var templateFactory = sinon.spy(function(options) {
-			return templateInstance;
-		});
 		var templateInstance = {
 			on: sinon.spy(function(event) {
 				return templateInstance;
 			})
 		};
+		var templateFactory = sinon.spy(function(options) {
+			return templateInstance;
+		});
+		var factory = sinon.spy(function(options, context, callback) {
+			return templateFactory;
+		});
 		templateInstance.addListener = templateInstance.on;
 		factory._templateFactory = templateFactory;
 		templateFactory._instance = templateInstance;
